@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三节 数据与方法</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        {{a}}
+    </div>
+
+    <div id="app2">
+        <p>{{ foo }}</p>
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+
+    <div id="example">
+        {{a}}
+    </div>
+
+    <script>
+        var data1 = { a : 1 };
+        var vm1 = new Vue({
+            el : "#app1",
+            data : data1
+        });
+        data1.a = "hi";
+
+        var obj = {
+            foo: 'bar'
+        }
+
+        // Object.freeze(obj)
+
+        new Vue({
+            el: '#app2',
+            data: obj
+        })
+
+        var data2 = { a: 2 };
+        var vm2 = new Vue({
+            el: '#example',
+            data: data2
+        })
+
+        console.log(vm2.$data === data2);
+        console.log(vm2.$el === document.getElementById('example'));
+        
+        vm2.$watch('a', function(newValue, oldValue) {
+            console.log("newValue: ", newValue);
+            console.log("oldValue: ", oldValue);
+        })
+
+        data2.a = 3;
+    </script>
+</body>
+</html>

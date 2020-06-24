@@ -23,7 +23,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
-当下载并使用<script>标签引入Vue.js后，Vue会被注册为一个全局变量，在代码文件中使用vue()函数进入vue操作。
+当下载并使用<script>标签引入Vue.js后，Vue会被注册为一个全局变量，在代码文件中使用vue()函数创建Vue实例，从而实现vue操作。
 
 ## 第2节 创建第一个vue应用
 
@@ -48,7 +48,7 @@ var app = new Vue({
 })
 ```
 
-**当在控制台中修改app.message得值时，页面渲染出的值改变**
+当在控制台中修改app.message的值时，页面渲染出的值改变
 
 声明式渲染语法2 -- 绑定元素attribute
 
@@ -68,4 +68,110 @@ var app2 = new Vue({
 	}
 })
 ```
+
+## 第3节 数据与方法
+
+#### new Vue()
+
+每个Vue应用都是通过用Vue函数创建一个新的Vue实例开始的，通常使用一个变量接收Vue函数被new之后的结果，也就是作为Vue的一个对象，通常使用vm(ViewModel视图模型的缩写)来代表Vue的一个实例，该过程语法如下：
+
+```javascript
+var vm = new Vue({
+
+})
+```
+
+#### data: data
+
+当一个Vue实例被创建时，它将data对象中的所有属性加入到Vue的响应式系统中。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值，示例如下：
+
+```html
+<div id="app">
+</div>
+```
+
+```javascript
+var data = { a : 1 };
+var vm = new Vue({
+    el: "#app",
+    data: data
+});
+```
+
+```javascript
+data.a = "hi";
+```
+
+```javascript
+vm.a = "hi, again";
+```
+
+以上改变data.a的值和vm.a的值效果相同，另外如果希望显示变量，则需要在new Vue()中就对该变量进行声明
+
+#### Object.freeze()
+
+Vue提供Object.freeze()方法，阻止修改现有的属性，同时响应系统中无法追踪变化，实例如下：
+
+```html
+<div id = "app">
+    <p>{{ foo}}</p>
+    <button v-on:click="foo = 'baz'">Change it</button>
+</div>
+```
+
+```javascript
+var obj = {
+	foo: 'bar'
+}
+
+Object.freeze(obj)
+
+new Vue({
+    el: '#app',
+    data: obj
+})
+```
+
+以上语句使用freeze()方法让obj对象不再进行响应式
+
+#### Vue实例属性和方法
+
+Vue实例的实例属性和方法都有前缀$，以便与用户定义的属性区分开来，实例如下：
+
+```javascript
+var data = { a: 1}
+var vm = new Vue({
+	el: '#example',
+	data: data
+})
+
+console.log(vm.$data === data); //true
+console.log(vm.$el = document.getElementById('example')); //true
+
+//$watch是一个实例方法，注意该方法是放在data.2 = 2;语句之前
+vm.$watch('a', function (newValue, oldValue) {
+    console.log("newValue: ", newValue); //2
+    console.log("oldValue: ", oldValue); //1
+})
+
+data.a = 2;
+```
+
+注意：$watch()方法是放置于数据修改语句，即data.2 = 2的前面
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
