@@ -159,6 +159,77 @@ data.a = 2;
 
 注意：$watch()方法是放置于数据修改语句，即data.2 = 2的前面
 
+## 第4节 生命周期
+
+#### Vue实例的初始化过程
+
+Vue实例在创建时需要经过一系列的初始化过程，例如设置数据监听、编译模板、将实例挂在到DOM并在数据变化时更新DOM等。
+
+#### 命周期钩子
+
+在Vue实例初始化过程中会运行一些叫做生命周期钩子的函数，可以借此在不同阶段添加需要的代码，生命周期钩子使用方法如下：
+
+```javascript
+new Vue({
+	data: {
+		a: 1
+	},
+	created: function() {
+		//'this'指向vm实例
+		console.log('a is: ' + this.a);
+	}
+})
+```
+
+#### 生期周期钩子API
+
+在Vue官网>学习>API>[选项/生命周期钩子章节]([https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90](https://cn.vuejs.org/v2/api/#选项-生命周期钩子))中可以查看所有生命周期钩子API
+
+#### 生命周期钩子用法
+
+生命周期钩子代码需要写在使用Vue函数创建的对象内，以对象属性的方式声明，该属性为一个函数，在不同生命周期阶段系统将自动调用这些函数，以beforeCreate、Created、beforeMount、mounted、beforeUpdate、updated三组常用生命周期函数为例，实例如下：
+
+```html
+<div id="app">
+	{{msg}}
+</div>
+```
+
+```javascript
+var vm = new Vue({
+    el: '#app',
+    data: {
+        msg: "hi vue",
+    },
+    beforeCreate: function(){
+        console.log('beforeCreate');
+    },
+    created: function(){
+    	console.log('created');
+	},
+	beforeMount: function(){
+        console.log('beforeMount');
+    },
+    mounted: function(){
+        console.log('mounted');
+    }
+})；
+
+setTimeout(function(){
+    vm.msg = "change......";
+}, 3000);
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 

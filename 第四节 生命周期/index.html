@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四节 生命周期</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        new Vue({
+            data: {
+                a: 1
+            },
+            created: function() {
+                console.log('a is: ' + this.a);
+            }
+        });
+
+       var vm = new Vue({
+           el: '#app',
+           data: {
+               msg: "hi vue",
+           },
+           beforeCreate: function(){
+               console.log('beforeCreate');
+           },
+           created: function(){
+               console.log('created');
+           },
+           beforeMount: function(){
+               console.log('beforeMount');
+           },
+           mounted: function(){
+               console.log('mounted');
+           },
+           beforeUpdate: function(){
+               console.log('beforeUpdate');
+           },
+           updated: function(){
+               console.log('updated');
+           }
+       });
+       setTimeout(function(){
+           vm.msg = "change......";
+       }, 3000);
+       //console.log(vm.data);
+    </script>
+</body>
+</html>
