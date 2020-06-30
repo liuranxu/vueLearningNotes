@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法-插值</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <span id="msg">Message: {{ msg1 }}</span>
+    </br>
+    <span id="once" v-once>使用v-once实现一次性插值：{{ msg2 }}</span>
+    <script>
+        var vm1 = new Vue({
+            el: "#msg",
+            data: {
+                msg1: "模板语法-插值",
+            }
+        });
+        var vm2 = new Vue({
+            el: "#once",
+            data: {
+                msg2: "使用V-once后该插值处的内容不会更新",
+            }
+        })
+        vm2.msg2 = "test";
+    </script>
+</body>
+</html>

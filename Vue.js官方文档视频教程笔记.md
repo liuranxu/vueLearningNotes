@@ -220,6 +220,50 @@ setTimeout(function(){
 }, 3000);
 ```
 
+## 第五节 模板语法-插值
+
+#### 模板语法
+
+Vue.js使用了基于HTML的模板语法。允许开发者声明式地将DOM绑定至底层Vue实例的数据。
+
+#### 文本插值
+
+数据绑定最常见的形式就是使用“Mustache”语法（双大括号）的文本插值，实例如下：
+
+```html
+<span>Message: {{ msg }}</span>
+```
+
+```javascript
+var vm = new Vue({
+	el: "span",
+	data: {
+		msg: "模板语法-插值"
+	}
+})
+```
+
+使用v-once指令可以实现一次性插值，即当数据改变时，插值处的内容不会更新。
+
+```html
+<span v-once>使用v-once指令实现一次性插值：{{ msg }}</span>
+```
+
+```javascript
+var vm = new Vue({
+	el: "span,
+	data: {
+		msg: "使用v-once该插值处的内容无法改变",
+	}
+})
+```
+
+此时使用如下代码修改msg的值，插值处的内容不变。
+
+```javascript
+vm.msg = "test";
+```
+
 
 
 
