@@ -264,6 +264,26 @@ var vm = new Vue({
 vm.msg = "test";
 ```
 
+#### 原始HTML
+
+双大括号{{}}会将数据解释为普通文本，而非HTML代码。为了输出真正的HTML，需要使用v-html指令，代码如下：
+
+```html
+<div>
+	<p>Using mustaches: {{ rawHtml }}</p>
+	<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+</div>
+```
+
+```javascript
+var vm3 = new Vue({
+	el: "div",
+	data: {
+		rawHtml: '<span style="color:red">This should be red.</span>',
+	}
+})
+```
+
 
 
 

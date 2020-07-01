@@ -9,7 +9,14 @@
 <body>
     <span id="msg">Message: {{ msg1 }}</span>
     </br>
+
     <span id="once" v-once>使用v-once实现一次性插值：{{ msg2 }}</span>
+    </br>
+    <div>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
+    
     <script>
         var vm1 = new Vue({
             el: "#msg",
@@ -17,6 +24,7 @@
                 msg1: "模板语法-插值",
             }
         });
+
         var vm2 = new Vue({
             el: "#once",
             data: {
@@ -24,6 +32,16 @@
             }
         })
         vm2.msg2 = "test";
+
+        var vm3 = new Vue({
+            el: "div",
+            data: {
+                rawHtml: '<span style="color:red">This should be red.</span>',
+            }
+        })
+
+
+
     </script>
 </body>
 </html>
