@@ -284,7 +284,9 @@ var vm3 = new Vue({
 })
 ```
 
+#### Attribute
 
+使用v-bind指令实现HTML attribute模板语法
 
 
 
