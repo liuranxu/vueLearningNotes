@@ -284,9 +284,30 @@ var vm3 = new Vue({
 })
 ```
 
-#### Attribute
+#### 特性
 
 使用v-bind指令实现HTML attribute模板语法
+
+```html
+<div id="red">
+    <div v-bind:class="color">test</div>
+</div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#red",
+	data: {
+		color: 'red'
+	}
+});
+```
+
+```css
+.red {
+	color: red;
+}
+```
 
 
 

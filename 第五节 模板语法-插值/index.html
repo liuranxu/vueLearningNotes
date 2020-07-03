@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>模板语法-插值</title>
+    <link rel="stylesheet" href="./style.css">
     <script src="vue.js"></script>
 </head>
 <body>
@@ -17,6 +18,10 @@
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
     </div>
     
+    <div id="red">
+        <div v-bind:class="color">test red</div>
+    </div>
+
     <script>
         var vm1 = new Vue({
             el: "#msg",
@@ -30,7 +35,7 @@
             data: {
                 msg2: "使用V-once后该插值处的内容不会更新",
             }
-        })
+        });
         vm2.msg2 = "test";
 
         var vm3 = new Vue({
@@ -38,7 +43,14 @@
             data: {
                 rawHtml: '<span style="color:red">This should be red.</span>',
             }
-        })
+        });
+
+        var vm4 = new Vue({
+            el:"#red",
+            data: {
+                color: 'red',
+            }
+        });
 
 
 
