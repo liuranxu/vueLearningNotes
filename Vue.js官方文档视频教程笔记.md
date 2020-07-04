@@ -309,6 +309,27 @@ var vm = new Vue({
 }
 ```
 
+#### 模板语法实现JavaScript表达式
+
+实例如下：
+
+```html
+<p>{{ number + 1 }}</p>
+<p>{{ ok ? 'YES' : 'No' }}</p>
+<p>{{ message.split('').reverse().join('') }}</pp>
+```
+
+```javascript
+var vm = new Vue({
+	el: "p",
+	data: {
+		number ：10，
+		ok : false,
+        message: "vue"
+	}
+})
+```
+
 
 
 
