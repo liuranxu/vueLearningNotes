@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7节 class与style绑定</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind:class="{ active: isActive , green : isGreen }" -->
+        <div 
+        class = "font-size"
+        
+        v-bind:class="[ isActive ? 'active' : '', isGreen ? 'green' : '']"
+        style="width:200px; height:200px; text-align:center; line-height:200px;">
+            hi vue
+        </div>    
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActive : false,
+                isGreen : true
+            }
+        });
+    </script>
+    <style>
+        .font-size {
+            font-size: 20px;
+        }
+        .active {
+            background: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</body>
+</html>

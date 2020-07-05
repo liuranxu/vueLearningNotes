@@ -391,6 +391,85 @@ methods: {
 }
 ```
 
+## 第7节 class与style绑定
+
+#### v-bind
+
+在vue数据绑定中，可以使用v-bind指令操作元素的class列表和内联样式，只需要通过表达式计算出字符串结果即可。为应对字符串拼接麻烦且易错，在将v-bind用于class和style时，Vue.js做了专门的增强。表达式结果类型除了字符串之外还可以是对象或数组。
+
+#### 使用对象绑定HTML Class
+
+可以传给v-bind:class一个对象，以动态的切换class，实例如下：
+
+```html
+<div id="app">
+	<div 
+	class="font-size"
+	v-bind:class="{ active: isActive , green : isGreen}"
+	style="width:200px; height:200px; text-align:center; line-height:200px;">
+	hi vue
+	</div>    
+</div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+		isActive : true,
+         isGreem : true
+	}
+});
+```
+
+```css
+.green {
+    color: green;
+}
+.active {
+    background: red;
+}
+```
+
+#### 使用数组绑定HTML Class
+
+同样也可以把一个数组传给v-bind:class，以应用一个class列表，实例如下：
+
+```html
+<div id="app">
+	<div class = v-bind：class="[ isActive ? 'active' : '', isGreen ? 'green' : '']"
+<div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+		isActive : false,
+		isGreen : true
+	}
+});
+```
+
+```css
+.active {
+	background: red;
+}
+.green {
+	color: green;
+}
+```
+
+#### 使用对象绑定内联样式
+
+使用一个Javascript对象v-bind:style绑定内联样式。CSS属性名可以使用驼峰式(camelCase)或者短横线分隔(Kebab-case，短横线分隔法的属性名需要用引号括起来)。
+
+直接将内联样式绑定到一个样式对象通常更好，这会让模板更清晰。
+
+实例如下：
+
+
+
 
 
 
