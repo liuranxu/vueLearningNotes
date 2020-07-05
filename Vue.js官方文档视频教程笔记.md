@@ -330,7 +330,66 @@ var vm = new Vue({
 })
 ```
 
+## 第六节 模板语法-指令
 
+#### 指令
+
+指令(directives)是带有v-前缀的特殊特性。指令特性的值预期是单个Javascript表达式(v-for例外)。
+
+指令的职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于DOM，实例如下：
+
+```html
+<p v-if="seen">现在你看到我了</p>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+		seen : true
+	}
+})
+```
+
+#### 参数
+
+一些指令能够接收一个“参数”，在指令名称之后以冒号表示，例如v-bind指令可以用于响应式的更新HTML attribute，实例如下：
+
+```html
+<a v-bind:href="url">...</a>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+		url : "http://github.com"
+	}
+})
+```
+
+#### 修饰符
+
+修饰符(modifier)是以半角句号.指明的特殊后缀，用于指出一个指令应该以特殊方式绑定，例如.prevent修饰符告诉v-on指令对于触发的事件调用event.preventDefault()，实例如下：
+
+```html
+<div v-on:click="click1">
+	<div v-on:click.stop="click2">
+		click me!
+	</div>
+</div>
+```
+
+```javascript
+methods: {
+	click1 : function() {
+		console.log('click1');
+	},
+	click2 : function() {
+		console.log('click2');
+	}
+}
+```
 
 
 
