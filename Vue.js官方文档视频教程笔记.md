@@ -468,6 +468,24 @@ var vm = new Vue({
 
 实例如下：
 
+```html
+<div 
+v-bind:style="{ color: color, fontSize: fontSize }"
+>
+	hi vue again
+</div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+		color: 'yellow',
+		fontSize: '50px'
+	}
+})
+```
+
 
 
 

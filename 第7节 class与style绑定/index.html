@@ -13,9 +13,16 @@
         class = "font-size"
         
         v-bind:class="[ isActive ? 'active' : '', isGreen ? 'green' : '']"
-        style="width:200px; height:200px; text-align:center; line-height:200px;">
+        style="width:200px; height:200px; text-align:center; line-height:200px;"
+        >
             hi vue
         </div>    
+
+        <div
+        v-bind:style="{ color: color, fontSize: fontSize }"
+        >
+            hi vue again
+        </div>
     </div>
     
     <script>
@@ -23,7 +30,9 @@
             el: "#app",
             data: {
                 isActive : false,
-                isGreen : true
+                isGreen : true,
+                color : 'yellow',
+                fontSize : '50px'
             }
         });
     </script>
