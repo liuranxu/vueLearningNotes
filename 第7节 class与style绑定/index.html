@@ -19,7 +19,7 @@
         </div>    
 
         <div
-        v-bind:style="{ color: color, fontSize: fontSize }"
+        v-bind:style="{ color: color, fontSize: fontSize, background: isRed ? '#FF0000' : '' }"
         >
             hi vue again
         </div>
@@ -32,7 +32,8 @@
                 isActive : false,
                 isGreen : true,
                 color : 'yellow',
-                fontSize : '50px'
+                fontSize : '50px',
+                isRed : true
             }
         });
     </script>

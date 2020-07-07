@@ -470,7 +470,7 @@ var vm = new Vue({
 
 ```html
 <div 
-v-bind:style="{ color: color, fontSize: fontSize }"
+v-bind:style="{ color: color, fontSize: fontSize, background: isRed ? '#FF0000' : ''}"
 >
 	hi vue again
 </div>
@@ -481,8 +481,27 @@ var vm = new Vue({
 	el: "#app",
 	data: {
 		color: 'yellow',
-		fontSize: '50px'
+		fontSize: '50px',
+        isRed : true
 	}
+})
+```
+
+#### 条件渲染
+
+使用v-if指令条件性地渲染一块内容。这块内容只会在指令的表达式返回truthy值的时候被渲染，实例如下：
+
+```html
+<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-else>Oh no</h1>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+    data: {
+        awesome : true
+    }
 })
 ```
 
