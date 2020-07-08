@@ -487,13 +487,17 @@ var vm = new Vue({
 })
 ```
 
-#### 条件渲染
+## 第8节 条件渲染
+
+#### v-if
 
 使用v-if指令条件性地渲染一块内容。这块内容只会在指令的表达式返回truthy值的时候被渲染，实例如下：
 
 ```html
-<h1 v-if="awesome">Vue is awesome!</h1>
-<h1 v-else>Oh no</h1>
+<div id="app">
+    <h1 v-if="awesome">Vue is awesome!</h1>
+	<h1 v-else>Oh no</h1>
+</div>
 ```
 
 ```javascript
@@ -503,6 +507,27 @@ var vm = new Vue({
         awesome : true
     }
 })
+```
+
+#### v-else-if
+
+v-else-if是指可以充当v-if的“else-if块”，可以连续使用，实例如下：
+
+```html
+<div id="app">
+	<div v-if="type === 'A'">
+		A
+	</div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+</div>
 ```
 
 

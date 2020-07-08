@@ -7,18 +7,41 @@
     <script src="./vue.js"></script>
 </head>
 <body>
-    <div id="app">
+    <div id="app1">
         <h1 v-if="awesome">vue is awesome!</h1>
         <h1 v-else>Oh no</h1>
     </div>
     
+    <div id="app2">
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+    </div>
+
     <script>
-        var vm = new Vue({
-            el: "#app",
+        var vm1 = new Vue({
+            el: "#app1",
             data: {
                 awesome : true
             }
         })
+
+        var vm2 = new Vue({
+            el: "#app2",
+            data: {
+                type : 'A'
+            }
+        })
+
     </script>
 </body>
 </html>
