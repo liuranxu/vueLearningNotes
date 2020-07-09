@@ -530,6 +530,53 @@ v-else-if是指可以充当v-if的“else-if块”，可以连续使用，实例
 </div>
 ```
 
+#### v-show
+
+带有v-show的元素始终会被渲染并保留在DOM中，v-show知识简单的切换元素的CSS属性display，当v-show中赋予变量值为false时，display为none。实例如下：
+
+```html
+<div id="#app3">
+	<div v-show="ok">hello v-show!</div>
+</div>
+```
+
+```javascript
+var vm3 = new Vue({
+	el: "#app3",
+	data: {
+		ok : true
+	}
+})
+```
+
+## 列表渲染
+
+#### v-for
+
+可以用v-for指令基于一个数组渲染一个列表。v-for指令需要使用item in items形式的特殊语法，其中items时原数据数组，而item则是被迭代的数组元素的别名。实例如下：
+
+```html
+<ul id="exaample-1">
+	<li v-for="item in items">
+		{{ item.message }}
+	</li>
+</ul>
+```
+
+```javascript
+var example1 = new Vue({
+	el: '#example-1',
+	data: {
+		items: [
+			{ message: 'Foo' },
+			{ message: 'Bar' }
+		]
+	}
+})
+```
+
+
+
 
 
 

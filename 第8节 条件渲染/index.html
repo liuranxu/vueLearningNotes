@@ -27,6 +27,10 @@
         </div>
     </div>
 
+    <div id="app3">
+        <h1 v-show="ok">hello v-show!</h1>
+    </div>
+
     <script>
         var vm1 = new Vue({
             el: "#app1",
@@ -42,6 +46,12 @@
             }
         })
 
+        var vm3 = new Vue({
+            el: "#app3",
+            data: {
+                ok : true
+            }
+        })
     </script>
 </body>
 </html>
