@@ -13,6 +13,12 @@
         </li>
     </ul>
 
+    <ul id="v-for-object" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+
     <script>
         var example1 = new Vue({
             el: '#example-1',
@@ -21,6 +27,16 @@
                     { message: 'Foo'},
                     { message: 'Bar'}
                 ]
+            }
+        })
+        var object1 = new Vue({
+            el: "#v-for-object",
+            data: {
+                object: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+                }
             }
         })
     </script>

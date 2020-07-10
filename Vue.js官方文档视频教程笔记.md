@@ -551,7 +551,7 @@ var vm3 = new Vue({
 
 ## 列表渲染
 
-#### v-for
+#### v-for基于数组渲染列表
 
 可以用v-for指令基于一个数组渲染一个列表。v-for指令需要使用item in items形式的特殊语法，其中items时原数据数组，而item则是被迭代的数组元素的别名。实例如下：
 
@@ -571,6 +571,31 @@ var example1 = new Vue({
 			{ message: 'Foo' },
 			{ message: 'Bar' }
 		]
+	}
+})
+```
+
+#### v-for使用对象渲染数组
+
+可以使用v-for来遍历一个对象的属性，实例如下：
+
+```html
+<ul id="v-for-object" class="demo">
+	<li v-for="value in object">
+		{{ value }}
+	</li>
+</ul>
+```
+
+```javascript
+var object1 = new Vue({
+	el: "#v-for-object",
+	data: {
+		object: {
+			title: 'How to do lists in Vue',
+			author: 'Jane Doe',
+			publishedAt: '2016-04-10'
+		}
 	}
 })
 ```
