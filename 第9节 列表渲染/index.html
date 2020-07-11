@@ -8,14 +8,14 @@
 </head>
 <body>
     <ul id="example-1">
-        <li v-for="item in items">
-            {{ item.message }}
+        <li v-for="item, index in items" v-bind:key="index">
+            {{ index }}. {{ item.message }}
         </li>
     </ul>
 
     <ul id="v-for-object" class="demo">
-        <li v-for="value in object">
-            {{ value }}
+        <li v-for="value, key in object" v-bind:key="key">
+            {{ key }}: {{ value }}
         </li>
     </ul>
 

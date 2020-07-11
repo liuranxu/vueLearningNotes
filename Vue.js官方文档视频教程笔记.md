@@ -553,12 +553,12 @@ var vm3 = new Vue({
 
 #### v-for基于数组渲染列表
 
-可以用v-for指令基于一个数组渲染一个列表。v-for指令需要使用item in items形式的特殊语法，其中items时原数据数组，而item则是被迭代的数组元素的别名。实例如下：
+可以用v-for指令基于一个数组渲染一个列表。v-for指令需要使用item in items形式的特殊语法，其中items时原数据数组，而item则是被迭代的数组元素的别名，可以使用index获取item的索引。实例如下：
 
 ```html
 <ul id="exaample-1">
-	<li v-for="item in items">
-		{{ item.message }}
+	<li v-for="item,index in items" v-bind:key="index">
+		{{ index }}{{ item.message }}
 	</li>
 </ul>
 ```
@@ -577,12 +577,12 @@ var example1 = new Vue({
 
 #### v-for使用对象渲染数组
 
-可以使用v-for来遍历一个对象的属性，实例如下：
+可以使用v-for来遍历一个对象的属性，可以使用key获取对象的键，实例如下：
 
 ```html
 <ul id="v-for-object" class="demo">
-	<li v-for="value in object">
-		{{ value }}
+	<li v-for="value,key in object" v-bind:key="key">
+		{{key}}: {{ value }}
 	</li>
 </ul>
 ```
@@ -599,6 +599,18 @@ var object1 = new Vue({
 	}
 })
 ```
+
+## 第10节 事件绑定
+
+#### v-on
+
+可以使用v-on指令监听DOM事件，并在触发时运行一些JavaScript代码，实例如下：
+
+```html
+
+```
+
+
 
 
 
