@@ -10,13 +10,23 @@
     <div id="example-1">
         <button v-on:click="counter += 1">Add 1</button>
         <p>The button above has been clicked {{ counter }} times.</p>
+        <button v-on:click="greet('abc', $event)">greet</button>
     </div>
 
     <script>
         var example1 = new Vue({
             el: '#example-1',
             data: {
-                counter: 0
+                counter : 0,
+                name : 'vue'
+            },
+            methods: {
+                greet : function(str, e) {
+                    alert("hi");
+                    alert(this.name);
+                    alert(str);
+                    console.log(e);
+                }
             }
         })
     </script>

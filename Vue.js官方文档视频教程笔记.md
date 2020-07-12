@@ -602,15 +602,29 @@ var object1 = new Vue({
 
 ## 第10节 事件绑定
 
-#### v-on
+#### v-on中直接添加代码
 
 可以使用v-on指令监听DOM事件，并在触发时运行一些JavaScript代码，实例如下：
 
 ```html
-
+<div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
 ```
 
+```javascript
+var example1 = new Vue({
+	el: '#example-1',
+	data: {
+		counter: 0
+	}
+})
+```
 
+#### v-on中添加方法名称
+
+由于许多事件处理逻辑更加复杂，所以直接将JavaScript代码写在v-on指令中是不可行的。v-on可以接收一个需要调用的方法名称，同时在new Vue()中添加methods属性，在method属性中添加函数名和函数体。实例如下：
 
 
 
