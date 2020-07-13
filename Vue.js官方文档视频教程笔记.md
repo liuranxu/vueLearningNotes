@@ -626,6 +626,43 @@ var example1 = new Vue({
 
 由于许多事件处理逻辑更加复杂，所以直接将JavaScript代码写在v-on指令中是不可行的。v-on可以接收一个需要调用的方法名称，同时在new Vue()中添加methods属性，在method属性中添加函数名和函数体。实例如下：
 
+```html
+<div id="example-1">
+	<button v-on:dblclick="greet('abc', $event)">greet</button>
+</div>
+```
+
+```javascript
+var example1 = new Vue({
+	el: '#example-1',
+	data: {
+		name : 'vue'
+	}
+	methods: {
+		greet : function(str, e) {
+			alert("hi");
+			alert(this.name);
+			alert(str);
+			console.log(e);
+		}
+	}
+})
+```
+
+## 第11节 表单输入绑定
+
+#### v-model
+
+可以使用v-model指令在表单<input>、<textarea>和<select>元素上创建双向数据绑定。它会根据控件类型选取正确的方法来更新元素。
+
+v-model在内部为不同的输入元素使用不同的属性并抛出不同的事件：
+
+* text和textarea元素使用value属性和input事件；
+* checkbox和radio使用checked属性和change事件；
+* select字段将value作为prop并将change作为事件。
+
+
+
 
 
 
