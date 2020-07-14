@@ -661,6 +661,67 @@ v-model在内部为不同的输入元素使用不同的属性并抛出不同的�
 * checkbox和radio使用checked属性和change事件；
 * select字段将value作为prop并将change作为事件。
 
+示例如下：
+
+```html
+<div id="app">
+        <div id="example-1">
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
+            <textarea v-model="message2" placeholder="add multiple lines"></textarea>
+            <p style="white-space: pre-line;">{{ message2 }}</p>
+            <br>
+        </div>
+
+        <div style="margin-top:20px;">
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+
+        <div style="margin-top:20px;">
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <button type="button" @click="submit">提交</button>
+    </div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data : {
+		message : "this is a input",
+		message2 : "this is a textarea",
+		checkedNames : ['Jack', 'John'],
+		picked : "Two"
+	},
+	methods: {
+		submit : function() {
+			console.log(this.message);
+			var postObj = {
+				msg1 : this.message,
+				msg2 : this.message2,
+				checkval : this.checkedNames
+			};
+			console.log(postObj);
+		}
+	}
+});
+```
+
+
+
 
 
 

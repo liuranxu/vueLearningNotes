@@ -36,16 +36,29 @@
             <br>
             <span>Picked: {{ picked }}</span>
         </div>
+        <button type="button" @click="submit">提交</button>
     </div>
 
     <script>
         var vm = new Vue({
             el: "#app",
             data : {
-                message : "",
-                message2 : "",
-                checkedNames : [],
-                picked : ""
+                message : "this is a input",
+                message2 : "this is a textarea",
+                checkedNames : ['Jack', 'John'],
+                picked : "Two"
+            },
+            methods: {
+                submit : function() {
+                    console.log(this.message);
+                    var postObj = {
+                        msg1 : this.message,
+                        msg2 : this.message2,
+                        checkval : this.checkedNames
+                    };
+                    console.log(postObj);
+                }
+
             }
         });
     </script>
