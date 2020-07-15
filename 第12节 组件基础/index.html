@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第12节 组件基础</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button-counter></button-counter>
+    </div>
+
+    <script>
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+
+            }
+        });
+    </script>
+</body>
+</html>

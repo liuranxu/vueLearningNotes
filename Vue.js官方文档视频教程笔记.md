@@ -720,7 +720,34 @@ var vm = new Vue({
 });
 ```
 
+## 第12节 组件基础
 
+#### vue.component
+
+可以使用Vue.componen()将重复的功能组装为组件，实现便捷开发的目的。组件是可复用的Vue实例，且带有一个名字。可以在一个通过new Vue创建的Vue根实例中，把这个组件作为自定义元素来使用。
+
+```html
+<div id="app">
+	<button-counter></button-counter>
+</div>
+```
+
+```javascript
+Vue.component('button-counter', {
+	data: function() {
+		return {
+			count: 0
+		}
+	},
+	template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+});
+var vm = new Vue({
+	el: "#app",
+	data: {
+	
+	}
+});
+```
 
 
 
