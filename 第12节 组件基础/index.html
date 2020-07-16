@@ -8,22 +8,36 @@
 </head>
 <body>
     <div id="app">
-        <button-counter></button-counter>
+        <button-counter title="title1: " @clicknow="clicknow"><h2>test slot</h2></button-counter>
+        <button-counter title="title2: "></button-counter>
     </div>
 
     <script>
         Vue.component('button-counter', {
+            props: ['title'],
             data: function () {
                 return {
                     count: 0
                 }
             },
-            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+            // template: '<div><h1>test:  </hi><button v-on:click="count++">{{title}} You clicked me {{ count }} times.</button></div>',
+            template: '<button v-on:click="clickfunction">You clicked me {{ count }} times.<slot></slot></button>',
+            methods:{
+                clickfunction : function() {
+                    this.count ++;
+                    this.$emit("clicknow", this.count);
+                }
+            }
         })
         var vm = new Vue({
             el: "#app",
             data: {
 
+            },
+            methods: {
+                clicknow : function(e) {
+                    console.log(e);
+                }          
             }
         });
     </script>

@@ -722,9 +722,9 @@ var vm = new Vue({
 
 ## 第12节 组件基础
 
-#### vue.component
+#### vue.component()
 
-可以使用Vue.componen()将重复的功能组装为组件，实现便捷开发的目的。组件是可复用的Vue实例，且带有一个名字。可以在一个通过new Vue创建的Vue根实例中，把这个组件作为自定义元素来使用。
+可以使用Vue.componen()函数创建组件，函数第一个参数是组件名称，第二个参数是以一个对象（包括组件属性props、数据data和模板内容template）描述组件，即将重复的功能组装为组件，实现便捷开发的目的。组件是可复用的Vue实例，且带有一个名字。可以在一个通过new Vue创建的Vue根实例中，把这个组件作为自定义元素来使用，使用HTML标签的方式使用组件，组件可以复用，实例如下。
 
 ```html
 <div id="app">
@@ -749,7 +749,68 @@ var vm = new Vue({
 });
 ```
 
+#### 组件事件监听
 
+可以使用this对象的$emit方法触发事件，this.$emit()方法的第一个参数是事件名称，第二个参数是可携带的参数。
+
+```html
+<div id="app">
+	<button-counter @clicknow="clicknow"></button-counter>
+</div>
+```
+
+```javascript
+Vue.component('button-counter', {
+	data: function() {
+		return {
+			count: 0
+		}
+	},
+	template: '<button v-on:click="clickfunction">You clicked me {{ count }} times.</button>',
+    methods:{
+        clickfunction ： function() {
+    		this.count ++;
+    		this.$emit('clicknow', this.count);
+		}
+    }，
+});
+var vm = new Vue({
+	el: "#app",
+	data: {
+	
+	},
+    methods: {
+        clicknow : function(e) {
+            console.log(e);
+        }
+    }
+});
+```
+
+#### <slot>标签
+
+在template模板中可以使用<slot>标签声明一个组件的插槽，在HMTL文档中模板的插槽中可以任意的声明HTML内容或者标签，实例如下：
+
+```html
+<div id="app">
+    <button-counter title="title2: "><h3>test slot</h3></button-counter>
+</div>
+```
+
+```javascript
+Vue.component('button-counter', {
+	data: function () {
+		return {
+			count: 0
+		}
+	},
+    template: '<button v-on:click="clickfunction">You clicked me {{ count }} times.<slot></slot></button>',
+var vm = new Vue({
+	el: "#app",
+	data: {
+
+	},
+```
 
 
 
