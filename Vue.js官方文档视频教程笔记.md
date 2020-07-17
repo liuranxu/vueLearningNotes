@@ -812,9 +812,35 @@ var vm = new Vue({
 	},
 ```
 
+## 第13节 组件注册
 
+#### Vue组件命名
 
+Vue组件命名可以使用kebab-case命名法，即my-component-name，也可以使用PascalCase命名法，即MyComponentName。
 
+#### 局部注册
+
+如果希望局部注册Vue组件，需要在new Var()函数中声明一个components属性，可以在此components属性内部局部注册组件。实例如下：
+
+```html
+<div id="app">
+	<test></test>
+</div>
+```
+
+```javascript
+var vm = new Vue({
+	el: "#app",
+	data: {
+	
+	},
+	components: {
+		test: {
+			template: "<h1>I am a template.</h1>"
+		}
+	}
+})
+```
 
 
 
