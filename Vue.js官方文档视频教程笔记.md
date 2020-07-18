@@ -842,6 +842,61 @@ var vm = new Vue({
 })
 ```
 
+#### 在模块系统中局部注册
+
+Vue.js支持在模块系统中局部注册组件，例如使用webpack模块系统，可以使用“import 组件名称 from 组件位置”的语法引入组件，之后在vue对象内部通过compoments这样的属性进行局部注册。
+
+## 单文件组件
+
+#### .vue
+
+使用文件扩展名为.vue的single-file components(单文件组件)可实现以下优势：
+
+* 解决全局定义时每个component命名不得重复的问题
+* 语法可实现高亮显示
+* 可支持CSS
+* 有构建步骤因此可以使用预处理器，如Pug(formerly Jade)和Babel
+* 可以使用webpack或Browserify等构建工具
+
+#### 为创建单文件组件需要安装的环境
+
+1. 安装npm
+
+   npm全称为Node Package Manager，是一个基于Node.js的包管理器
+
+   获取npm版本号以验证安装成功： npm -v
+
+2. 由于网络原因，建议安装cnpm代替npm
+
+   安装方法：npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+3. 安装vue-cli
+
+   vue.cli是vue官方提供的脚手架工具
+
+   安装方法：cnpm install -g @vue/cli
+
+4. 安装 webpack
+
+   webpack是JavaScript打包器(module bundler)
+
+   安装方法：cnpm install -g webpack
+
+## 第15节 免终端开发vue应用
+
+uni-app + HBuilder X
+
+uni-app和HBuilderX都是DCloud公司出品的，前者是框架，后者是ide，两者相互搭配，让项目开发简单和高效，让开发者把更多的精力放在业务逻辑上。
+
+#### 使用HBuilder X创建的vue项目文件组成
+
+* pages 业务页面文件存放的目录
+* static 存放应用引用静态资源(如图片、视频等)，静态资源只能存放于此
+* main.js Vue初始化入口文件
+* App.vue 应用配置，用来配置APP全局样式以及监听、应用生命周期
+* manifest.json 配置应用名称、appid、logo、版本等打包信息
+* pages.json 配置页面路由、导航条、选项卡等页面类信息
+
 
 
 
